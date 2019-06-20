@@ -5,16 +5,23 @@ require 'rspec'
 require 'simplecov'
 require 'simplecov-console'
 
+require_relative 'prepare_test_database'
+
 SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter.new([
   SimpleCov::Formatter::Console
 ])
 SimpleCov.start
 
 ENV['RACK_ENV'] = 'test'
+ENV['ENVIRONMENT'] = 'test'
 
 Capybara.app = Peepr
 
 RSpec.configure do |config|
+  config.before(:each) do
+    prepare_test_database()
+  end
+
   config.expect_with :rspec do |expectations|
     expectations.include_chain_clauses_in_custom_matcher_descriptions = true
   end
