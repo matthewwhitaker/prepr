@@ -49,6 +49,8 @@ describe Post do
     it "adds a new post, then finds it" do
       test_post = Post.add(body: 'this will be updated', title: 'update this')
       found_post = Post.find(id: test_post.id)
+
+      expect(found_post).to be_a Post
       expect(found_post.id).to eq(test_post.id)
       expect(found_post.title).to eq(test_post.title)
       expect(found_post.body).to eq(test_post.body)

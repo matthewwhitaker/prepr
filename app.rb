@@ -1,6 +1,7 @@
 require 'sinatra/base'
 require 'sinatra/flash'
 require './lib/post'
+require './db/scripts/db_setup'
 
 class Peepr < Sinatra::Base
   register Sinatra::Flash
