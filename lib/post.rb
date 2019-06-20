@@ -1,5 +1,5 @@
 require 'pg'
-require 'db_connection'
+require './lib/db_connection'
 
 class Post
   attr_reader :id, :title, :body
