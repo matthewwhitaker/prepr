@@ -1,5 +1,16 @@
+<div class="flash"><%= flash[:notice] %></div>
+
 <ul>
   <% @posts.each do |post| %>
-    <li><%= post %></li>
+    <li class="post" id="post-<%= post.id %>"><%= post.title %> - <%= post.body %>
+      <form action="/posts/<%= post.id %>" method="post">
+        <input type='hidden' name='_method' value='DELETE'/>
+        <input type="submit" name='Delete' value="Delete" onclick="return confirm('Are you sure you want to delete this?');"/>
+      </form>
+
+      <form action="/posts/<%= post.id %>/edit" method="get">
+        <input type="submit" value='Edit'/>
+      </form>
+    </li>
   <% end %>
 </ul>
