@@ -6,6 +6,7 @@ def prepare_test_database
   con = PG.connect(dbname: 'peepr_test')
   con.exec("DROP TABLE IF EXISTS posts;")
   con.exec("DROP TABLE IF EXISTS users;")
-  con.exec("CREATE TABLE posts(id SERIAL PRIMARY KEY, title VARCHAR(100), body VARCHAR(280));")
-  con.exec("CREATE TABLE users(id SERIAL PRIMARY KEY, email VARCHAR(60), username VARCHAR(100), password VARCHAR(140));")
+  con.exec(IO.read("db/migrations/01_create_posts_table.sql"))
+  con.exec(IO.read("db/migrations/02_add_title_to_posts.sql"))
+  con.exec(IO.read("db/migrations/03_create_users_table.sql"))
 end

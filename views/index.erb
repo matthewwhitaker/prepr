@@ -1,9 +1,10 @@
 <div class="flash"><%= flash[:notice] %></div>
 
-## Make this universal in header.....
-<form class="" action="/sessions/destroy" method="post">
-  <input type="submit" value="Sign out">
-</form>
+<% if @user %>
+  <form class="" action="/sessions/destroy" method="post">
+    <input type="submit" value="Sign out">
+  </form>
+<% end %>
 
 <ul>
   <% @posts.each do |post| %>
