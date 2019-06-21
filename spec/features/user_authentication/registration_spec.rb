@@ -7,8 +7,4 @@ feature 'user registration' do
     click_button('Submit')
     expect(page).to have_content('Welcome, tester!')
   end
-
-  scenario 'user cannot sign up if the email address is already taken' do
-
-  end
 end

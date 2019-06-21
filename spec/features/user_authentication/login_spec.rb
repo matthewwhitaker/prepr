@@ -1,16 +1,17 @@
 feature 'login' do
   scenario 'user can log into an existing account' do
     create_test_user()
-    test_user_sign_in()
+    sign_in_test_user()
 
     expect(page).to have_current_path('/posts')
     expect(page).to have_content('Welcome, tester!')
   end
 
   scenario 'error message when logging in with incorrect email' do
-    User.create(email: 'tester@testing.com', username: 'tester', password: 'thisisatest')
+    create_test_user()
 
-    visit('/sessions/new')
+    visit('/')
+    click_button('Sign in')
     fill_in('email', with: 'incorrect@incorrect.com')
     fill_in('password', with: 'thisisatest')
     click_button('Submit')
@@ -20,7 +21,7 @@ feature 'login' do
   end
 
   scenario 'error message when logging in with incorrect password' do
-    User.create(email: 'tester@testing.com', username: 'tester', password: 'thisisatest')
+    create_test_user()
 
     visit('/sessions/new')
     fill_in('email', with: 'tester@testing.com')
@@ -32,16 +33,13 @@ feature 'login' do
   end
 
   scenario 'user can log out at the end of their session' do
-    User.create(email: 'tester@testing.com', username: 'tester', password: 'thisisatest')
-
-    visit('/sessions/new')
-    fill_in('email', with: 'tester@testing.com')
-    fill_in('password', with: 'thisisatest')
-    click_button('Submit')
+    create_test_user()
+    sign_in_test_user()
 
     click_button('Sign out')
 
     expect(page).not_to have_content('Welcome, tester!')
+    expect(page).to have_current_path('/posts')
     expect(page).to have_content('You have been successfully signed out.')
   end
 
