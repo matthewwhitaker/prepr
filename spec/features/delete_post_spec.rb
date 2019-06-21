@@ -1,6 +1,8 @@
 feature 'Deleting a post' do
   scenario 'A user can delete a post' do
-    Post.add(title: 'testing', body: 'still testing')
+    test_user = create_test_user()
+    test_user_sign_in()
+    Post.add(title: 'testing', body: 'still testing', user_id: test_user.id)
     visit('/posts')
     expect(page).to have_content('testing')
     expect(page).to have_content('still testing')

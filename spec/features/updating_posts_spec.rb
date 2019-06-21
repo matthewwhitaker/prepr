@@ -1,6 +1,8 @@
 feature 'update posts' do
   it "creates and updates post title and body" do
-    test_post = Post.add(title: 'this title will change', body: 'this body will change')
+    test_user = create_test_user()
+    test_user_sign_in()
+    test_post = Post.add(title: 'this title will change', body: 'this body will change', user_id: test_user.id)
     visit('/posts')
     expect(page).to have_content('this title will change')
     expect(page).to have_content('this body will change')

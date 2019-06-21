@@ -19,11 +19,16 @@ class Peepr < Sinatra::Base
   end
 
   get '/posts/new' do
-    erb :'posts/new_post'
+    if session[:user_id]
+      erb :'posts/new_post'
+    else
+      flash[:notice] = 'Please log in or sign up to create a new post.'
+      redirect('/sessions/new')
+    end
   end
 
   post '/posts/new' do
-    Post.add(body: params[:post_body], title: params[:post_title])
+    Post.add(body: params[:post_body], title: params[:post_title], user_id: session[:user_id])
     redirect('/posts')
   end
 

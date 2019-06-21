@@ -1,11 +1,7 @@
 feature 'login' do
   scenario 'user can log into an existing account' do
-    User.create(email: 'tester@testing.com', username: 'tester', password: 'thisisatest')
-
-    visit('/sessions/new')
-    fill_in('email', with: 'tester@testing.com')
-    fill_in('password', with: 'thisisatest')
-    click_button('Submit')
+    create_test_user()
+    test_user_sign_in()
 
     expect(page).to have_current_path('/posts')
     expect(page).to have_content('Welcome, tester!')
