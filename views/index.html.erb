@@ -1,66 +1,23 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title></title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-  </head>
-  <body>
+<div class="container-fluid">
+  <% @posts.each do |post| %>
+    <div class="post card" id="post-<%= post.id %>">
+      <div class="card-header"><%= post.title %></div>
+      <div class="card-body">
+        <p><%= post.body %></p>
+        <p>Posted by <%= post.username %></p>
 
-    <nav class="navbar sticky-top navbar-dark bg-dark">
-      <a class="navbar-brand" href="#">Prepr</a>
-      <% if session[:user_id] %>
-        <form class="" action="/posts/new" method="get">
-          <input class="btn btn-primary btn-sm" type="submit" value="Add new post">
-        </form>
-        <form action="/sessions/destroy" method="post">
-          <input class="btn btn-warning btn-sm" type="submit" value="Sign out">
-        </form>
-      <% else %>
-        <form action="/sessions/new" method="get">
-          <input class="btn btn-primary btn-sm" type="submit" value="Sign in">
-        </form>
-        <form action="/users/new" method="get">
-          <input class="btn btn-warning btn-sm" type="submit" value="Sign up">
-        </form>
-      <% end %>
-    </nav>
+        <% if post.user_id == session[:user_id] %>
+          <form action="/posts/<%= post.id %>" method="post">
+            <input type='hidden' name='_method' value='DELETE'/>
+            <input type="submit" class="btn btn-danger btn-sm" name='Delete' value="Delete" onclick="return confirm('Are you sure you want to delete this?');"/>
+          </form>
 
-    <% if flash[:notice] %>
-      <div class="alert alert-primary alert-dismissible fade show" role="alert">
-        <%= flash[:notice] %>
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-        </button>
+          <form action="/posts/<%= post.id %>/edit" method="get">
+            <input type="submit" class="btn btn-info btn-sm" value='Edit'/>
+          </form>
+        <% end %>
+
       </div>
-    <% end %>
-
-    <div class="container-fluid">
-      <% @posts.each do |post| %>
-        <div class="post card" id="post-<%= post.id %>">
-          <div class="card-header"><%= post.title %></div>
-          <div class="card-body">
-            <p><%= post.body %></p>
-            <p>Posted by <%= post.username %></p>
-
-            <% if post.user_id == session[:user_id] %>
-              <form action="/posts/<%= post.id %>" method="post">
-                <input type='hidden' name='_method' value='DELETE'/>
-                <input type="submit" class="btn btn-danger btn-sm" name='Delete' value="Delete" onclick="return confirm('Are you sure you want to delete this?');"/>
-              </form>
-
-              <form action="/posts/<%= post.id %>/edit" method="get">
-                <input type="submit" class="btn btn-info btn-sm" value='Edit'/>
-              </form>
-            <% end %>
-
-          </div>
-        </div>
-      <% end %>
     </div>
-
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-  </body>
-</html>
+  <% end %>
+</div>

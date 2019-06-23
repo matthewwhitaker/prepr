@@ -15,12 +15,12 @@ class Peepr < Sinatra::Base
   get '/posts' do
     @posts = Post.all
     @user = User.find(id: session[:user_id])
-    erb :'index.html'
+    erb :'index.html', { :layout => :'application.html' }
   end
 
   get '/posts/new' do
     if session[:user_id]
-      erb :'posts/new_post.html'
+      erb :'posts/new_post.html', { :layout => :'application.html' }
     else
       flash[:notice] = 'Please log in or sign up to create a new post.'
       redirect('/sessions/new')
@@ -40,7 +40,7 @@ class Peepr < Sinatra::Base
 
   get '/posts/:id/edit' do
     @post = Post.find(id: params[:id])
-    erb :'posts/edit_post.html'
+    erb :'posts/edit_post.html', { :layout => :'application.html' }
   end
 
   patch '/posts/:id' do
@@ -50,7 +50,7 @@ class Peepr < Sinatra::Base
   end
 
   get '/users/new' do
-    erb :'users/signup.html'
+    erb :'users/signup.html', { :layout => :'application.html' }
   end
 
   post '/users/new' do
@@ -61,7 +61,7 @@ class Peepr < Sinatra::Base
   end
 
   get '/sessions/new' do
-    erb :'users/sign_in.html'
+    erb :'users/sign_in.html', { :layout => :'application.html' }
   end
 
   post '/sessions/new' do
