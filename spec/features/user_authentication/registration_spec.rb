@@ -1,4 +1,4 @@
-feature 'user registration' do
+feature 'user registration happy paths' do
   scenario 'user can sign up' do
     visit('/users/new')
     fill_in('email', with: 'tester@testing.com')
@@ -8,7 +8,9 @@ feature 'user registration' do
     expect(page).to have_current_path('/posts')
     expect(page).to have_content('Welcome, tester!')
   end
+end
 
+feature 'user registration unhappy paths' do
   scenario 'user cannot sign up with blank fields' do
     visit('/users/new')
     fill_in('username', with: 'tester')
