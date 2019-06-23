@@ -14,7 +14,7 @@ require_relative '.././db/scripts/db_setup.rb'
 
 SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter.new([SimpleCov::Formatter::Console])
 SimpleCov.start
-Capybara.app = Peepr
+Capybara.app = Prepr
 
 RSpec.configure do |config|
   config.before(:each) do

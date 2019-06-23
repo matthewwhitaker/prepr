@@ -4,7 +4,7 @@ require './lib/post'
 require './db/scripts/db_setup'
 require './lib/user'
 
-class Peepr < Sinatra::Base
+class Prepr < Sinatra::Base
   register Sinatra::Flash
   enable :sessions, :method_override
 
