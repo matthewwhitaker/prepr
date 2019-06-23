@@ -1,7 +1,7 @@
 ENV['RACK_ENV'] = 'test'
 ENV['ENVIRONMENT'] = 'test'
 
-require File.join(File.dirname(__FILE__),'..', 'app.rb')
+require File.join(File.dirname(__FILE__), '..', 'app.rb')
 require 'capybara'
 require 'capybara/rspec'
 require 'rspec'
@@ -12,19 +12,13 @@ require_relative './helper_methods/prepare_test_database'
 require_relative './helper_methods/user_authentication'
 require_relative '.././db/scripts/db_setup.rb'
 
-SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter.new([
-  SimpleCov::Formatter::Console
-])
+SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter.new([SimpleCov::Formatter::Console])
 SimpleCov.start
-
-
-
 Capybara.app = Peepr
 
 RSpec.configure do |config|
-
   config.before(:each) do
-    prepare_test_database()
+    prepare_test_database
   end
 
   config.expect_with :rspec do |expectations|

@@ -1,7 +1,7 @@
 feature 'update posts' do
-  it "creates post and updates post title and body from prep-populated form" do
-    test_user = create_test_user()
-    sign_in_test_user()
+  it 'creates post and updates post title and body from prep-populated form' do
+    test_user = create_test_user
+    sign_in_test_user
     test_post = Post.add(title: 'this title will change', body: 'this body will change', user_id: test_user.id)
     visit('/posts')
     expect(page).to have_content('this title will change')

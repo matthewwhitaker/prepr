@@ -2,12 +2,12 @@ require 'post'
 
 describe Post do
   before(:each) do
-    prepare_test_database()
+    prepare_test_database
   end
-  
+
   describe '.all' do
     it 'adds posts and returns all stored posts' do
-      test_user = create_test_user()
+      test_user = create_test_user
       Post.add(body: 'here is the first post', title: 'post title 1', user_id: test_user.id)
       Post.add(body: 'here is the second', title: 'post title 2', user_id: test_user.id)
       Post.add(body: 'and here is the third', title: 'post title 3', user_id: test_user.id)
@@ -26,7 +26,7 @@ describe Post do
 
   describe '.add' do
     it 'creates a new post and checks returned data' do
-      test_user = create_test_user()
+      test_user = create_test_user
       test_post = Post.add(body: 'this is a test', title: 'this is the title of the test post', user_id: test_user.id)
       expect(test_post).to be_a Post
       expect(test_post.title).to eq('this is the title of the test post')
@@ -35,8 +35,8 @@ describe Post do
   end
 
   describe '.delete' do
-    it "adds a new post, then deletes it" do
-      test_user = create_test_user()
+    it 'adds a new post, then deletes it' do
+      test_user = create_test_user
       test_post = Post.add(body: 'this will be deleted', title: 'delete this', user_id: test_user.id)
       Post.delete(id: test_post.id)
       expect(Post.all).not_to include('this will be deleted')
@@ -45,8 +45,8 @@ describe Post do
   end
 
   describe '.update' do
-    it "adds a new post, then updates it" do
-      test_user = create_test_user()
+    it 'adds a new post, then updates it' do
+      test_user = create_test_user
       test_post = Post.add(body: 'this will be updated', title: 'update this', user_id: test_user.id)
       Post.update(id: test_post.id, title: 'this is the new title', body: 'this is the new body')
       updated_post = Post.find(id: test_post.id)
@@ -58,8 +58,8 @@ describe Post do
   end
 
   describe '.find' do
-    it "adds a new post, then finds it" do
-      test_user = create_test_user()
+    it 'adds a new post, then finds it' do
+      test_user = create_test_user
       test_post = Post.add(body: 'this will be updated', title: 'update this', user_id: test_user.id)
       found_post = Post.find(id: test_post.id)
 

@@ -37,12 +37,12 @@ describe User do
     end
 
     it 'rejects a user with unrecognised email' do
-      test_user = User.create(email: 'tester@testing.com', username: 'tester', password: 'thisisatest')
+      User.create(email: 'tester@testing.com', username: 'tester', password: 'thisisatest')
       expect(User.authenticate(email: 'blah@blah.com', password: 'thisisatest')).to be_nil
     end
 
     it 'rejects a user with wrong password' do
-      test_user = User.create(email: 'tester@testing.com', username: 'tester', password: 'thisisatest')
+      User.create(email: 'tester@testing.com', username: 'tester', password: 'thisisatest')
       expect(User.authenticate(email: 'tester@testing.com', password: 'incorrect1234')).to be_nil
     end
   end

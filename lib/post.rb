@@ -5,7 +5,7 @@ class Post
   attr_reader :id, :title, :body, :user_id, :username
 
   def initialize(id:, title:, body:, user_id:, username:)
-    @id  = id
+    @id = id
     @title = title
     @body = body
     @user_id = user_id

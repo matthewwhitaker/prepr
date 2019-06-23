@@ -5,8 +5,8 @@ feature 'Visiting homepage' do
   end
 
   scenario 'navbar renders correctly when signed in' do
-    create_test_user()
-    sign_in_test_user()
+    create_test_user
+    sign_in_test_user
     page.find_link(class: 'navbar-brand')
     page.find_button('Add new post')
     page.find_button('Sign out')
