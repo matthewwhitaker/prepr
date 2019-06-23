@@ -54,10 +54,15 @@ class Peepr < Sinatra::Base
   end
 
   post '/users/new' do
-    current_user = User.create(email: params[:email], username: params[:username], password: params[:password])
-    session[:user_id] = current_user.id
-    flash[:notice] = "Welcome, #{current_user.username}!"
-    redirect('/posts')
+    unless (params[:email] == '' || params[:username] == '' || params[:password] == '')
+      current_user = User.create(email: params[:email], username: params[:username], password: params[:password])
+      session[:user_id] = current_user.id
+      flash[:notice] = "Welcome, #{current_user.username}!"
+      redirect('/posts')
+    else
+      flash[:notice] = 'Please fill out all fields.'
+      redirect('/users/new')
+    end
   end
 
   get '/sessions/new' do
