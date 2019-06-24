@@ -1,0 +1,10 @@
+{
+  "missing_fields": "Please fill out all fields.",
+  "login_required": "Please log in or sign up.",
+  "post_deleted": "Post has been deleted.",
+  "post_updated": "Post was updated.",
+  "invalid_login_details": "incorrect email/password combination.",
+  "sign_out_success": "You have been successfully signed out.",
+  "sign_up_success": "You have been successfully signed up.",
+  "sign_in_success": "You have been successfully signed in."
+}

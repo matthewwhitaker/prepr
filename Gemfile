@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 
 gem 'bcrypt'
 gem 'capybara'
+gem 'json'
 gem 'pg'
 gem 'rspec'
 gem 'rubocop'

@@ -4,23 +4,24 @@
     <meta charset="utf-8">
     <title></title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="/stylesheets/style.css">
   </head>
   <body>
 
     <nav class="navbar sticky-top navbar-dark bg-dark">
       <a class="navbar-brand" href="/">Prepr</a>
       <% if session[:user_id] %>
-        <form class="" action="/posts/new" method="get">
+        <form class="header-form" action="/posts/new" method="get">
           <input class="btn btn-primary btn-sm" type="submit" value="Add new post">
         </form>
-        <form action="/sessions/destroy" method="post">
+        <form class="header-form" action="/sessions/destroy" method="post">
           <input class="btn btn-warning btn-sm" type="submit" value="Sign out">
         </form>
       <% else %>
-        <form action="/sessions/new" method="get">
+        <form class="header-form" action="/sessions/new" method="get">
           <input class="btn btn-primary btn-sm" type="submit" value="Sign in">
         </form>
-        <form action="/users/new" method="get">
+        <form class="header-form" action="/users/new" method="get">
           <input class="btn btn-warning btn-sm" type="submit" value="Sign up">
         </form>
       <% end %>

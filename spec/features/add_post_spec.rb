@@ -16,7 +16,7 @@ feature 'add post' do
   scenario 'user cannot reach post route unless signed in' do
     visit('/posts/new')
     expect(page).to have_current_path('/sessions/new')
-    expect(page).to have_content('Please log in or sign up to create a new post.')
+    expect(page).to have_content('Please log in or sign up.')
   end
 
   scenario 'post shows username of who made it' do

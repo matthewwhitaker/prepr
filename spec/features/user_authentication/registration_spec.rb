@@ -6,7 +6,7 @@ feature 'user registration happy paths' do
     fill_in('password', with: 'thisisatest')
     click_button('Submit')
     expect(page).to have_current_path('/posts')
-    expect(page).to have_content('Welcome, tester!')
+    expect(page).to have_content('You have been successfully signed up.')
   end
 end
 

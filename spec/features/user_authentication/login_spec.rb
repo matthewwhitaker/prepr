@@ -4,7 +4,7 @@ feature 'login' do
     sign_in_test_user
 
     expect(page).to have_current_path('/posts')
-    expect(page).to have_content('Welcome, tester!')
+    expect(page).to have_content('You have been successfully signed in.')
   end
 
   scenario 'error message when logging in with incorrect email' do
@@ -38,7 +38,6 @@ feature 'login' do
 
     click_button('Sign out')
 
-    expect(page).not_to have_content('Welcome, tester!')
     expect(page).to have_current_path('/posts')
     expect(page).to have_content('You have been successfully signed out.')
   end
