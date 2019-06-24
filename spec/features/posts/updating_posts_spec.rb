@@ -18,7 +18,7 @@ feature 'update posts' do
     click_button('Submit')
 
     expect(page).to have_current_path('/posts')
-    expect(page).to have_content('Post was updated')
+    expect(page).to have_content('Post has been updated')
     expect(page).to have_content('this title has changed')
     expect(page).to have_content('this body has changed')
 

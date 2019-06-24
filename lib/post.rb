@@ -14,7 +14,9 @@ class Post
 
   def self.all
     posts = []
-    DatabaseConnection.query('SELECT p.id, p.title, p.body, p.user_id, u.username FROM posts p LEFT OUTER JOIN users u on p.user_id = u.id').each { |row| posts << Post.new(id: row['id'], title: row['title'], body: row['body'], user_id: row['user_id'], username: row['username']) }
+    DatabaseConnection.query('SELECT p.id, p.title, p.body, p.user_id, u.username FROM posts p LEFT OUTER JOIN users u on p.user_id = u.id').each do |row|
+      posts << Post.new(id: row['id'], title: row['title'], body: row['body'], user_id: row['user_id'], username: row['username'])
+    end
     posts
   end
 

@@ -70,6 +70,7 @@ Work on this project is still on-going, here's the user stories I'm focusing on.
 * `As a developer, so that there's no confusion between users, I want to ensure each email is unique on sign up`
 * `As a developer, so that users can interact with my application for real, I want to host it on Heroku`
 * `As a developer, so that nothing breaks when deploying, I want to integrate CodeShip with my application`
+* `As a user, so I see new recipes regularly, I want to see most recently posted recipes first`
 * `As a user, so I can see well structured information, I want to add ingredients and instructions in separate fields`
 * `As a user, so I can refer back to the original recipe, I want to be able to add a link to the original recipe (if there is one)`
 * `As a user, so I can find recipes to cook with ingredients I already have, I want to be able to search for content in the existing recipes on the site`
