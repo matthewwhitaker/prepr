@@ -79,3 +79,4 @@ Work on this project is still on-going, here's the user stories I'm focusing on.
 ## Other frameworks
 
 * Encryption of passwords is done using [bcrypt](https://rubygems.org/gems/bcrypt/versions/3.1.12)
+* [Bootstrap](https://getbootstrap.com) for HTML components
