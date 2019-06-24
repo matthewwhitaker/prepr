@@ -69,6 +69,7 @@ Work on this project is still on-going, here's the user stories I'm focusing on.
 * `As a developer, so that I keep my code clean and lean, I want to use an ORM for my databases`
 * `As a developer, so that there's no confusion between users, I want to ensure each email is unique on sign up`
 * `As a developer, so that users can interact with my application for real, I want to host it on Heroku`
+* `As a developer, so that users can store recipes, I want to have my application connected to secure remote postgreSQL databases`
 * `As a developer, so that nothing breaks when deploying, I want to integrate CodeShip with my application`
 * `As a user, so I see new recipes regularly, I want to see most recently posted recipes first`
 * `As a user, so I can see well structured information, I want to add ingredients and instructions in separate fields`

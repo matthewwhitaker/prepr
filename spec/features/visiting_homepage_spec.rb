@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 feature 'Visiting homepage' do
   scenario 'redirects from index to posts' do
     visit('/')

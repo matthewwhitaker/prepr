@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 feature 'user registration happy paths' do
   scenario 'user can sign up' do
     visit('/users/new')

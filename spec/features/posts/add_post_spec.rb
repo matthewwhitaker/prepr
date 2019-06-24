@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 feature 'add post' do
   scenario 'user adds new post' do
     create_test_user

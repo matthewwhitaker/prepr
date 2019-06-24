@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require './lib/db_connection'
 
 if ENV['ENVIRONMENT'] == 'test'

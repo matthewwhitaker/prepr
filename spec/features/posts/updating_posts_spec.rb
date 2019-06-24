@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 feature 'update posts' do
   it 'creates post and updates post title and body from prep-populated form' do
     test_user = create_test_user

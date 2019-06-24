@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 feature 'Deleting a post' do
   scenario 'A user can delete a post' do
     create_test_user

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'post'
 
 describe Post do

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 feature 'login' do
   scenario 'user can log into an existing account' do
     create_test_user
