@@ -5,19 +5,19 @@ This is a site for users to store recipes to use later, and discover new recipes
 ## Application structure
 
 The program is made up of:
-* Model - Ruby with (PostgreSQL)[https://www.postgresql.org/] database. These can be found in the `lib` directory, with database migration files in the `db` directory.
-* Controller - Ruby with (Sinatra)[http://sinatrarb.com/] framework. This can be found in the `app.rb` file in the root directory.
+* Model - Ruby with [PostgreSQL](https://www.postgresql.org/) database. These can be found in the `lib` directory, with database migration files in the `db` directory.
+* Controller - Ruby with [Sinatra](http://sinatrarb.com/) framework. This can be found in the `app.rb` file in the root directory.
 * View - erb, HTMl & CSS. These can be found in the `views` directory. The site has a primary template - `application.html.erb` with other components yielded within this structure.
 
 ## Testing
 
-Unit testing is handled in (Rspec)[https://rspec.info/], with feature testing in (Capybara)[https://github.com/teamcapybara/capybara].
+Unit testing is handled in [Rspec](https://rspec.info/), with feature testing in [Capybara](https://github.com/teamcapybara/capybara).
 
-Test coverage is measured using (Simplecov)[https://github.com/colszowka/simplecov].
+Test coverage is measured using [Simplecov](https://github.com/colszowka/simplecov).
 
 Once the application is set up (see below), tests can be run using the command `rspec` from the terminal. Test coverage will automatically be generated and presented.
 
-Code quality is tested using the (Rubocop)[https://github.com/rubocop-hq/rubocop] linter.
+Code quality is tested using the [Rubocop](https://github.com/rubocop-hq/rubocop) linter.
 
 ## How to set up the application
 
@@ -45,7 +45,7 @@ That's it - ready to run the application.
 
 ## Running the application
 
-From the root directory use the terminal command `rackup` to run the application locally, and visit `http://localhost:9292` in a browser.
+From the root directory use the terminal command `rackup` to run the application locally, and visit [`http://localhost:9292`](http://localhost:9292) in a browser.
 
 ## User stories
 
