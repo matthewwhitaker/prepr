@@ -7,7 +7,7 @@ This is a site for users to store recipes to use later, and discover new recipes
 The program is made up of:
 * Model - Ruby with [PostgreSQL](https://www.postgresql.org/) database. These can be found in the `lib` directory, with database migration files in the `db` directory.
 * Controller - Ruby with [Sinatra](http://sinatrarb.com/) framework. This can be found in the `app.rb` file in the root directory.
-* View - erb, HTMl & CSS. These can be found in the `views` directory. The site has a primary template - `application.html.erb` with other components yielded within this structure.
+* View - erb, HTML & CSS. These can be found in the `views` directory. The site has a primary template - `application.html.erb` which handles the navbar, scripts and messages to the user - with other components yielded within this template.
 
 ## Testing
 
@@ -35,11 +35,11 @@ To set up the databases for development and testing environments run these comma
 
 Before running the application, set up the development database. Connect to it by running `\c prepr;`. Next run the contents of the files in the `db/migrations` directory. If there's more than one, run them in order (e.g. '01_...', then '02_...').
 
-All done - the test database will be set up automatically during testing.
+All done - the tables for the test database will be set up automatically during testing.
 
 ### Install gems
 
-From a terminal in the root directory run `gem install bundler` to install bundler if you don't have it already. Then run `bundle install` to install the necessary gems.
+From a terminal in the root directory run `gem install bundler` to install bundler, if you don't have it already. Then run `bundle install` to install the necessary gems.
 
 That's it - ready to run the application.
 
@@ -68,8 +68,14 @@ Work on this project is still on-going, here's the user stories I'm focusing on.
 
 * `As a developer, so that I keep my code clean and lean, I want to use an ORM for my databases`
 * `As a developer, so that there's no confusion between users, I want to ensure each email is unique on sign up`
+* `As a developer, so that users can interact with my application for real, I want to host it on Heroku`
+* `As a developer, so that nothing breaks when deploying, I want to integrate CodeShip with my application`
 * `As a user, so I can see well structured information, I want to add ingredients and instructions in separate fields`
 * `As a user, so I can refer back to the original recipe, I want to be able to add a link to the original recipe (if there is one)`
 * `As a user, so I can find recipes to cook with ingredients I already have, I want to be able to search for content in the existing recipes on the site`
 * `As a user, so that I can let other people know what I thought of their recipe, I want to give it a numerical rating`
 * `As a user, so that I can pick popular recipes, I want to see the average score of each recipe`
+
+## Other frameworks
+
+* Encryption of passwords is done using [bcrypt](https://rubygems.org/gems/bcrypt/versions/3.1.12)
