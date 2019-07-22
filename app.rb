@@ -3,10 +3,12 @@ require 'sinatra/flash'
 require './lib/post'
 require './db/scripts/db_setup'
 require './lib/user'
+require 'yaml'
 
 class Prepr < Sinatra::Base
   register Sinatra::Flash
   enable :sessions, :method_override
+  user_messages = YAML.load(File.read("user_messages.yaml"))
 
   get '/' do
     redirect('/posts')
@@ -22,7 +24,7 @@ class Prepr < Sinatra::Base
     if session[:user_id]
       erb :'posts/new_post.html', layout: :'application.html'
     else
-      flash[:notice] = JSON.parse(File.read('user_messages.json'))['login_required']
+      flash[:notice] = user_messages[:login_required]
       redirect('/sessions/new')
     end
   end
@@ -34,7 +36,7 @@ class Prepr < Sinatra::Base
 
   delete '/posts/:id' do
     Post.delete(id: params[:id])
-    flash[:notice] = JSON.parse(File.read('user_messages.json'))['post_deleted']
+    flash[:notice] = user_messages[:post_deleted]
     redirect('/posts')
   end
 
@@ -45,7 +47,7 @@ class Prepr < Sinatra::Base
 
   patch '/posts/:id' do
     Post.update(id: params[:id], body: params[:post_body], title: params[:post_title])
-    flash[:notice] = JSON.parse(File.read('user_messages.json'))['post_updated']
+    flash[:notice] = user_messages[:post_updated]
     redirect('/posts')
   end
 
@@ -57,10 +59,10 @@ class Prepr < Sinatra::Base
     unless (params[:email] == '' || params[:username] == '' || params[:password] == '')
       current_user = User.create(email: params[:email], username: params[:username], password: params[:password])
       session[:user_id] = current_user.id
-      flash[:notice] = JSON.parse(File.read('user_messages.json'))['sign_up_success']
+      flash[:notice] = user_messages[:sign_up_success]
       redirect('/posts')
     else
-      flash[:notice] = JSON.parse(File.read('user_messages.json'))['missing_fields']
+      flash[:notice] = user_messages[:missing_fields]
       redirect('/users/new')
     end
   end
@@ -74,17 +76,17 @@ class Prepr < Sinatra::Base
 
     if user
       session[:user_id] = user.id
-      flash[:notice] = JSON.parse(File.read('user_messages.json'))['sign_in_success']
+      flash[:notice] = user_messages[:sign_in_success]
       redirect('/posts')
     else
-      flash[:notice] = JSON.parse(File.read('user_messages.json'))['invalid_login_details']
+      flash[:notice] = user_messages[:invalid_login_details]
       redirect('/sessions/new')
     end
   end
 
   post '/sessions/destroy' do
     session.clear
-    flash[:notice] = JSON.parse(File.read('user_messages.json'))["sign_out_success"]
+    flash[:notice] = user_messages[:sign_out_success]
     redirect('/posts')
   end
 
